@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+
     <title>Shopping Cart</title>
 </head>
 <body>
@@ -14,7 +16,15 @@
         <input type="checkbox" id="delivery"> Add Delivery (R220)
     </label>
 
-    <button onclick="checkout()">Checkout</button>
+
+    <div class="popup">
+        <button class="btn btn-outline-light my-5" id="popup-pay">Checkout</button>
+        <p class="popup-message" id="popup-message"></p>
+    </div>
+
+    <script src="https://js.yoco.com/sdk/v1/yoco-sdk-web.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
     <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -49,6 +59,35 @@
         }
 
         renderCart();
+
+        const yocoSDK = new window.YocoSDK({ publicKey: 'pk_test_ed3c54a6gOol69qa7f45' });
+        document.getElementById("popup-pay").addEventListener("click", function () {
+            yocoSDK.showPopup({
+                currency: 'ZAR',
+                amountInCents: totalElement.textContent * 100,
+                name: 'Isintu Siyabukwa',
+                callback: response => {
+                    if (response.error) {
+                        document.getElementById("popup-message").innerText = response.error.message;
+                    } else {
+                        processPayment(response.id, "popup-message");
+                    }
+                }
+            });
+        });
+
+        function processPayment(token, messageElement) {
+            axios.post('http://localhost:3000/pay', { token })  // Call your backend
+    .then(response => {
+        document.getElementById(messageElement).innerText = response.data.status;
+        window.location.href = '/';
+    })
+    .catch(error => {
+        document.getElementById(messageElement).innerText = error.response ? error.response.data.displayMessage : "Payment Failed. Please try again later";
+    });
+        }
+ 
     </script>
+
 </body>
 </html>
