@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+</head>
+<body>
+    <h2>Shopping Cart</h2>
+    <div id="cart-items"></div>
+    <p><strong>Total: R<span id="total">0.00</span></strong></p>
+    
+    <label>
+        <input type="checkbox" id="delivery"> Add Delivery (R220)
+    </label>
+
+    <button onclick="checkout()">Checkout</button>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        let cartItems = document.getElementById('cart-items');
+        let totalElement = document.getElementById('total');
+        let deliveryCheckbox = document.getElementById('delivery');
+
+        function renderCart() {
+            cartItems.innerHTML = '';
+            let total = 0;
+
+            cart.forEach(item => {
+                let itemTotal = item.price * item.quantity;
+                total += itemTotal;
+
+                let itemDiv = document.createElement('div');
+                itemDiv.innerHTML = `${item.name} (x${item.quantity}) - R${itemTotal.toFixed(2)}`;
+                cartItems.appendChild(itemDiv);
+            });
+
+            if (deliveryCheckbox.checked) {
+                total += 220;
+            }
+
+            totalElement.textContent = total.toFixed(2);
+        }
+
+        deliveryCheckbox.addEventListener('change', renderCart);
+
+        function checkout() {
+            alert(`Total amount to pay: R${totalElement.textContent}`);
+        }
+
+        renderCart();
+    </script>
+</body>
+</html>
