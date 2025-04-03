@@ -76,4 +76,102 @@
 }
 
 
+
+
+h2 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+
+#cart-items {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 15px;
+    text-align: left;
+}
+
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+    border-bottom: 2px solid #c00;
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+p {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+
+label {
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.3);
+    margin-right: 10px;
+    accent-color: #c00;
+}
+
+
+#popup-pay {
+    background: #c00;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    font-size: 20px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    margin-top: 20px;
+}
+
+#popup-pay:hover {
+    background: #900;
+    transform: scale(1.05);
+}
+
+
+.popup-message {
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #090;
+}
+
+.delete-btn {
+    background: #c00;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.delete-btn:hover {
+    background: #900;
+}
+
+
+
+
  
