@@ -21,7 +21,7 @@ const transporter = nodemailer.createTransport({
     secure: true,
     auth: {
         user: 'isintu@isintu.org.za', // Store this in .env
-        pass: '@Asi201512', // Store this in .env
+        pass: '@Bu8,.lwa', // Store this in .env
     },
     tls: {
         rejectUnauthorized: false,
@@ -51,8 +51,7 @@ app.post('/pay', async (req, res) => {
                     const emailBody = `
                         <h2>Payment Confirmation</h2>
                         <p>Dear Customer,</p>
-                        <p>Your payment of R50.00 has been successfully processed.</p>
-                        <p>Transaction ID: ${response.data.id}</p>
+                        <p>Your payment has been successfully processed.</p>
                         <p>Thank you for your purchase!</p>
                     `;
         
