@@ -70,14 +70,14 @@
                     if (response.error) {
                         document.getElementById("popup-message").innerText = response.error.message;
                     } else {
-                        processPayment(response.id, "popup-message");
+                        processPayment(response.id, "popup-message", "sekotorehumile1@gmail.com");
                     }
                 }
             });
         });
 
-        function processPayment(token, messageElement) {
-            axios.post('http://localhost:3000/pay', { token })  // Call your backend
+        function processPayment(token, messageElement, email) {
+            axios.post('http://localhost:3000/pay', { token,email })  // Call your backend
     .then(response => {
         document.getElementById(messageElement).innerText = response.data.status;
         window.location.href = '/';
