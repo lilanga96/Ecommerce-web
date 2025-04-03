@@ -37,6 +37,8 @@
     let cartItems = document.getElementById('cart-items');
     let totalElement = document.getElementById('total');
     let deliveryCheckbox = document.getElementById('delivery');
+    let userEmail = localStorage.getItem("userEmail");
+    console.log('user email', userEmail)
 
     let currentUser = null;
 
@@ -137,7 +139,7 @@
                 if (response.error) {
                     document.getElementById("popup-message").innerText = response.error.message;
                 } else {
-                    processPayment(response.id, "popup-message", "sekotorehumile1@gmail.com");
+                    processPayment(response.id, "popup-message", userEmail);
                 }
             }
         });
