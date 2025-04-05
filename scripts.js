@@ -1,7 +1,7 @@
 const display = document.querySelector('.productDisplay');
 
 const products = [
-    { id: 1, name: 'Amanzi Amnyama', price: 10, image: './images/amanzi-amnyama2.jpg' },
+    { id: 1, name: 'Amanzi Amnyama', price: 5, image: './images/amanzi-amnyama2.jpg' },
     { id: 2, name: 'Amacelebrity', price: 115, image: './images/amacelebrity2.jpg' },
     { id: 3, name: 'Badudule', price: 115, image: './images/badudule2.jpg' },
     { id: 4, name: 'Cacisa Amaphupha', price: 115, image: './images/cacisa-amaphupha2.jpg' },
